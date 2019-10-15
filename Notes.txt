@@ -1,0 +1,18 @@
+Pure functions:
+	-have no hidden inputs
+	-have no hidden outputs
+	-do not execute other side effects
+
+	-are called referentially transpparent: 
+	 they return the same result everytime they're called
+	 with the same visible parameter
+	-they can be treated as data
+
+We have to mutate things as less as possible.
+Functional programming - functions are trated as data
+
+CODE NOTES: 
+	-when using functionalPlus library you have to remove 
+	 a couple of lines from result.hpp file.
+	-to add an include folder to the project: 
+		Project -> properties -> C/C++ -> general -> Additional include directories
