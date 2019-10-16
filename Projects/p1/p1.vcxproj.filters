@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="p1.cpp">
+    <ClCompile Include="transformTemplate.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercise1-keepIf.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

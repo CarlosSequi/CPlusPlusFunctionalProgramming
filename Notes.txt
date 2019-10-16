@@ -11,8 +11,45 @@ Pure functions:
 We have to mutate things as less as possible.
 Functional programming - functions are trated as data
 
-CODE NOTES: 
+CODE NOTES (Visual Studio 2019): 
 	-when using functionalPlus library you have to remove 
 	 a couple of lines from result.hpp file.
 	-to add an include folder to the project: 
 		Project -> properties -> C/C++ -> general -> Additional include directories
+
+DRY principle = Don't Repeat Yourself
+------------------------------------------------------------------------
+
+Class 1.3 : types of data in functional programming
+
+int x
+x : Int;
+
+vector<int> xs;
+xs: [Int];
+
+pair<int, float> p;
+p : (Int, Float);
+
+map<Key, Value> dict;
+dict : Map Key Value;
+
+int foo(string)
+foo : String -> Int
+
+ContainerIn transform(F function, const ContainerOut& xs);
+transform : ((a->b), [a]) -> [b]
+
+// this is a variation of the use of templates just
+// for restrict the use of std functions:
+std::function<void(int)> f; // f is an object of type "function"
+							// to which it can be assigned any function
+							// which receives an int and returns void.
+
+Container keep_if(F function, const Container & xs);
+keep_if : ((a -> Bool), [a]) -> [a]
+
+functional plus api search:
+http://www.editgym.com/fplus-api-search/
+Here we can search for functions using queries in functional programming
+notation or in classic c++ notation
