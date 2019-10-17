@@ -16,6 +16,7 @@ CODE NOTES (Visual Studio 2019):
 	 a couple of lines from result.hpp file.
 	-to add an include folder to the project: 
 		Project -> properties -> C/C++ -> general -> Additional include directories
+		set it to: "$(SolutionDir)Dependencias/include"
 
 DRY principle = Don't Repeat Yourself
 ------------------------------------------------------------------------
