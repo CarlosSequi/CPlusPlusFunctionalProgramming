@@ -1,14 +1,9 @@
-#include <vector>
+#include "exercise1.h"
 #include <fplus/fplus.hpp>
-#include <string>
 
-class Exercise1{
-
-	int str_to_int(const std::string& str)
+	int Exercise1::str_to_int(const std::string& str)
 	{
 		int result;
-		std::istringstream(str) >> result;
+		istringstream(str) >> result;
 		return result;
 	}
-
-};

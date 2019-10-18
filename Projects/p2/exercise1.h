@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <fplus/fplus.hpp>
+
+using namespace std;
 
 class Exercise1 {
 public:
