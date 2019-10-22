@@ -54,3 +54,12 @@ functional plus api search:
 http://www.editgym.com/fplus-api-search/
 Here we can search for functions using queries in functional programming
 notation or in classic c++ notation
+
+------------------------------------------------------------------------
+
+class 10:
+
+arity: number of parameters a function takes
+partial application: process of decreasing the arity
+currying: transformation of a several arguments function in a 
+		  single argument function
