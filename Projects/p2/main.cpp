@@ -38,6 +38,13 @@ double str_to_int(const std::string& str)
 	return result;
 }
 
+double str_to_double(const std::string& str)
+{
+	double result;
+	std::istringstream(str) >> result;
+	return result;
+}
+
 
 float point_distance(const point& p1, const point& p2)
 {
@@ -210,14 +217,14 @@ int main() {
 
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	// EXERCISE 5
-	const std::vector<user> users = {
+	// EXERCISE 6
+	/*const std::vector<user> users = {
 		{"Nicole", "GER", 2},
 		{"Justin", "USA", 1},
 		{"Rachel", "USA", 5},
 		{"Robert", "USA", 6},
 		{"Stefan", "GER", 4}
-	};
+	};*/
 
 	// SELECT country, SUM(visits)
 	//     FROM users
@@ -235,12 +242,12 @@ int main() {
 	// primero agrupa por paises con el group globally
 	// aplica la transformacion_snd para hacer la sumatoria de las visitas a cada pais
 	// aplica el transform externo por que users es un vector de structs
-	const auto result = fplus::fwd::apply(users,
+	/*const auto result = fplus::fwd::apply(users,
 		fplus::fwd::group_globally_on_labeled(get_country),
 		fplus::fwd::transform(fplus::fwd::transform_snd(visit_sum))
 		);
 
-	std::cout << fplus::show_cont(result) << std::endl;
+	std::cout << fplus::show_cont(result) << std::endl;*/
 
 	// Bonus Exercise:
 //     The run-time complexity of your algorithm will be O(n^2),
@@ -248,11 +255,21 @@ int main() {
 //     But Strings form a partially ordered set.
 //     See if you can get down to O(n*log(n))
 //     by using sort and group_on_labeled.
-	const auto result_n_log_n = fplus::fwd::apply(users
+	/*const auto result_n_log_n = fplus::fwd::apply(users
 		, fplus::fwd::sort_on(get_country)
 		, fplus::fwd::group_on_labeled(get_country)
 		, fplus::fwd::transform(fplus::fwd::transform_snd(visit_sum))
-	);
+	);*/
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+		// EXERCISE 7
+		const std::string input = "1,5,4,7,2,2,3.34";
+
+		const auto parse_and_product = fplus::fwd::compose(fplus::fwd::split(',', false), fplus::fwd::transform(str_to_double), fplus::fwd::product());
+
+		const auto result = parse_and_product(input);
+
+		std::cout << result << std::endl;
 
 }
 
