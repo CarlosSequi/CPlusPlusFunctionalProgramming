@@ -7,6 +7,30 @@ typedef std::vector<point> points;
 
 using namespace std;
 
+struct user
+{
+	std::string name;
+	std::string country;
+	std::size_t visits;
+};
+
+std::string get_country(const user& u)
+{
+	return u.country;
+}
+
+std::size_t get_visits(const user& u)
+{
+	return u.visits;
+}
+
+const auto visit_sum = [](const std::vector<user>& xs) -> std::size_t
+{
+	return fplus::fwd::apply(xs
+		, fplus::fwd::transform(get_visits)
+		, fplus::fwd::sum());
+};
+
 double str_to_int(const std::string& str)
 {
 	double result;
@@ -138,7 +162,7 @@ int main() {
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	// EXERCISE 5
-	vector<point> polygon = { {1,2}, {7,3}, {6,5}, {4,4}, {2,9} };
+	/*vector<point> polygon = { {1,2}, {7,3}, {6,5}, {4,4}, {2,9} };*/
 
 	/*const auto result = fplus::maximum_on(
 		edge_length,
@@ -147,9 +171,9 @@ int main() {
 	// exercise a
 	//     Rewrite the the longest-edge code
 //     in forward-application style.
-	const auto result = fplus::fwd::apply(polygon,
+	/*const auto result = fplus::fwd::apply(polygon,
 		get_edges,
-		fplus::fwd::maximum_on(edge_length));
+		fplus::fwd::maximum_on(edge_length));*/
 
 	// exercise b
 	//     Invent a quite long chain of function applications,
@@ -157,12 +181,79 @@ int main() {
 //     and implement its application to an input value
 //     in all three styles:
 //         1) Assign intermediate values to variables.
+		/*	int a = 3;
+			int b = fplus::square(a);
+			int c = fplus::min_2(2, b);
+			int d = fplus::abs_diff(7, c);
+			int e = fplus::clamp(1, 4, d);
+			int f = fplus::max_2(6, e);
+			std::cout << f << std::endl;
 //         2) Nested function calls
+			int f_nested = fplus::max_2(6,
+				fplus::clamp(1, 4,
+					fplus::abs_diff(7,
+						fplus::min_2(2,
+							fplus::square(a)))));
+			std::cout << f_nested << std::endl;
 //         3) Foward-application style
+			int f_fwd = fplus::fwd::apply(a
+				, fplus::fwd::square()
+				, fplus::fwd::min_2(2)
+				, fplus::fwd::abs_diff(7)
+				, fplus::fwd::clamp(1, 4)
+				, fplus::fwd::max_2(6));
+			std::cout << f_fwd << std::endl;
 //     Compare all three versions and contemplate
 //     the readability of all of them.
 
-	cout << fplus::show(result) << endl;
+	cout << fplus::show(result) << endl;*/
+
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	// EXERCISE 5
+	const std::vector<user> users = {
+		{"Nicole", "GER", 2},
+		{"Justin", "USA", 1},
+		{"Rachel", "USA", 5},
+		{"Robert", "USA", 6},
+		{"Stefan", "GER", 4}
+	};
+
+	// SELECT country, SUM(visits)
+	//     FROM users
+	//     GROUP BY country;
+
+	// Exercise:
+//     Implement the task solved by the SQL query above
+//     in C++ using the following fplus functions:
+//     - group_globally_on_labeled
+//     - transform_snd
+//     - mean
+//     Look them up in the API search,
+//     and understand the type signatures.
+
+	// primero agrupa por paises con el group globally
+	// aplica la transformacion_snd para hacer la sumatoria de las visitas a cada pais
+	// aplica el transform externo por que users es un vector de structs
+	const auto result = fplus::fwd::apply(users,
+		fplus::fwd::group_globally_on_labeled(get_country),
+		fplus::fwd::transform(fplus::fwd::transform_snd(visit_sum))
+		);
+
+	std::cout << fplus::show_cont(result) << std::endl;
+
+	// Bonus Exercise:
+//     The run-time complexity of your algorithm will be O(n^2),
+//     due to using group_globally_on_labeled.
+//     But Strings form a partially ordered set.
+//     See if you can get down to O(n*log(n))
+//     by using sort and group_on_labeled.
+	const auto result_n_log_n = fplus::fwd::apply(users
+		, fplus::fwd::sort_on(get_country)
+		, fplus::fwd::group_on_labeled(get_country)
+		, fplus::fwd::transform(fplus::fwd::transform_snd(visit_sum))
+	);
+
 }
 
 
