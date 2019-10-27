@@ -5,8 +5,6 @@ typedef std::pair<float, float> point;
 typedef std::pair<point, point> edge;
 typedef std::vector<point> points;
 
-using namespace std;
-
 struct user
 {
 	std::string name;
@@ -138,7 +136,7 @@ int main() {
 	// el transform externo es de fwd (forward), por lo que toma el contenedor
 	// del transform externo y se lo aplica a la funcion que recibe, el square.
 	// hay dos transform debido a que el contenedor es un vector de vectores.
-	// el square tiene un <int> siguiendo la notación std::function<return(parameter)>
+	// el square tiene un <int> siguiendo la notaciÃ³n std::function<return(parameter)>
 	/*fplus::transform(fplus::fwd::transform(fplus::square<int>), xss);*/
 
 	// Exercise b:
