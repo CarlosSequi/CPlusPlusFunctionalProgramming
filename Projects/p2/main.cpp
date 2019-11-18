@@ -133,7 +133,7 @@ int main() {
 //     Try out different possibilities to achieve your goal.
 
 	// el transform externo recibe una funcion y un contenedor.
-	// el transform externo es de fwd (forward), por lo que toma el contenedor
+	// el transform interno es de fwd (forward), por lo que toma el contenedor
 	// del transform externo y se lo aplica a la funcion que recibe, el square.
 	// hay dos transform debido a que el contenedor es un vector de vectores.
 	// el square tiene un <int> siguiendo la notación std::function<return(parameter)>
@@ -261,13 +261,13 @@ int main() {
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 		// EXERCISE 7
-		const std::string input = "1,5,4,7,2,2,3.34";
+		/*const std::string input = "1,5,4,7,2,2,3.34";
 
 		const auto parse_and_product = fplus::fwd::compose(fplus::fwd::split(',', false), fplus::fwd::transform(str_to_double), fplus::fwd::product());
 
 		const auto result = parse_and_product(input);
 
-		std::cout << result << std::endl;
+		std::cout << result << std::endl;*/
 
 }
 

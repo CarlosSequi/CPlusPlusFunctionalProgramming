@@ -3,7 +3,7 @@ Pure functions:
 	-have no hidden outputs
 	-do not execute other side effects
 
-	-are called referentially transpparent: 
+	-are called referentially transparent: 
 	 they return the same result everytime they're called
 	 with the same visible parameter
 	-they can be treated as data
@@ -63,3 +63,13 @@ arity: number of parameters a function takes
 partial application: process of decreasing the arity
 currying: transformation of a several arguments function in a 
 		  single argument function
+
+
+------------------------------------------------------------------------
+
+class 13:
+
+compose function is used to compose some functions in only one.
+This is used to make clearer the readabality and to increase the 
+performance of the compiler, for example, when it is necessary to 
+do a couple of consequent transform loops
