@@ -121,3 +121,21 @@ and thus make them monoids?
 				answer -> yes
 	3) strings (or sequences in general) under concatenation
 			answer -> not
+
+
+------------------------------------------------------------------------
+
+class 18: error handling.
+
+-optional: data type that represents a value that may or may not be present.
+-maybe monad:
+	The Maybe monad allows us to sequence actions in the context of failure. 
+	That is, an action in the Maybe monad can either yield a value or result 
+	in failure. This allows us to express computations that may go wrong and fail,
+	such as taking the head of an empty list.
+	Maybe<a> can denote a failed computation if it contains a null pointer, or 
+	ir can denote a value if its pointer points to that value. It is a special
+	kind of function object or computational entity that may yield a value
+	depending on the state of its internal pointer. It is a monadic value or
+	monadic action. It is useful to handle errors and avoid the access to 
+	something that is not there
