@@ -139,3 +139,11 @@ class 18: error handling.
 	depending on the state of its internal pointer. It is a monadic value or
 	monadic action. It is useful to handle errors and avoid the access to 
 	something that is not there
+-
+--------------------------------------------------------------------------
+
+class 19: functors: type of container holding some type which follows the next laws:
+	1-mapping the identity function has the same effect as apply it directly to the container
+	2-coposition: fmap(compose(f,g)) == compose(fmap(f), fmap(g))
+	3-has a map function on it (it can be mapped)
+
